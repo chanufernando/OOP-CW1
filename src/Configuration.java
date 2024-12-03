@@ -9,7 +9,7 @@ public class Configuration {
     public void configureSystem() {
         Scanner scanner = new Scanner(System.in);
         try {
-            System.out.print("Enter total number of tickets");
+            System.out.print("Enter total number of tickets:");
             totalTickets = Integer.parseInt(scanner.nextLine());
 
             System.out.print("Enter ticket release rate (tickets per second):");
