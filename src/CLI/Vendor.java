@@ -1,3 +1,4 @@
+package CLI;
 
 public class Vendor implements Runnable {
     private TicketPool ticketPool;
@@ -16,7 +17,7 @@ public class Vendor implements Runnable {
                 Thread.sleep(releaseRate);
             }
         } catch (InterruptedException e) {
-            System.out.println("Vendor interrupted.");
+            System.out.println("CLI.Vendor interrupted.");
         }
     }
 }
