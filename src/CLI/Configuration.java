@@ -1,3 +1,5 @@
+package CLI;
+
 public class Configuration {
     private int totalTickets;
     private int maxCapacity;
@@ -29,7 +31,7 @@ public class Configuration {
 
     @Override
     public String toString() {
-        return "System Configuration:\n" +
+        return "System CLI.Configuration:\n" +
                 "Total Tickets: " + totalTickets + "\n" +
                 "Max Capacity: " + maxCapacity + "\n" +
                 "Release Rate: " + releaseRate + " ms\n";
