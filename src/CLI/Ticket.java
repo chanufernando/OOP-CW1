@@ -1,3 +1,4 @@
+package CLI;
 
 public class Ticket {
     private int ticketId;
@@ -8,6 +9,6 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket ID: " + ticketId;
+        return "CLI.Ticket ID: " + ticketId;
     }
 }
