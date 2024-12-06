@@ -1,21 +1,22 @@
-public class Vendor implements Runnable {
-    private final TicketPool pool;
-    private final int releaseRate;
 
-    public Vendor(TicketPool pool, int releaseRate) {
-        this.pool = pool;
+public class Vendor implements Runnable {
+    private TicketPool ticketPool;
+    private int releaseRate;
+
+    public Vendor(TicketPool ticketPool, int releaseRate) {
+        this.ticketPool = ticketPool;
         this.releaseRate = releaseRate;
     }
 
     @Override
     public void run() {
         try {
-            for (int i = 1; ; i++) {
-                pool.addTickets(i);
-                Thread.sleep(1000 / releaseRate);
+            while (true) {
+                ticketPool.addTicket(new Ticket((int) (Math.random() * 1000)));
+                Thread.sleep(releaseRate);
             }
         } catch (InterruptedException e) {
-            System.err.println("Vendor interrupted.");
+            System.out.println("Vendor interrupted.");
         }
     }
 }
