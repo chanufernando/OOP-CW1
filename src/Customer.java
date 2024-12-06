@@ -1,21 +1,26 @@
-public class Customer implements Runnable {
-    private final TicketPool pool;
-    private final int retrievalRate;
 
-    public Customer(TicketPool pool, int retrievalRate) {
-        this.pool = pool;
-        this.retrievalRate = retrievalRate;
+
+public class Customer implements Runnable {
+    private TicketPool ticketPool;
+
+    public Customer(TicketPool ticketPool) {
+        this.ticketPool = ticketPool;
     }
 
     @Override
     public void run() {
         try {
             while (true) {
-                int ticket = pool.removeTicket();
-                Thread.sleep(1000 / retrievalRate);
+                Ticket ticket = ticketPool.retrieveTicket();
+                if (ticket != null) {
+                    System.out.println("Customer retrieved: " + ticket);
+                } else {
+                    System.out.println("No tickets available!");
+                }
+                Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
-            System.err.println("Customer interrupted.");
+            System.out.println("Customer interrupted.");
         }
     }
 }
