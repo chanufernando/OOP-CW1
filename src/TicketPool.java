@@ -1,30 +1,23 @@
+
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class TicketPool {
-    private final Queue<Integer> tickets = new LinkedList<>();
-    private final int maxCapacity;
+    private Queue<Ticket> ticketQueue;
 
-    public TicketPool(int maxCapacity) {
-        this.maxCapacity = maxCapacity;
+    public TicketPool() {
+        this.ticketQueue = new LinkedList<>();
     }
 
-    public synchronized void addTickets(int ticket) throws InterruptedException {
-        while (tickets.size() >= maxCapacity) {
-            wait(); // Wait if the pool is full
-        }
-        tickets.offer(ticket);
-        System.out.println("Added ticket: " + ticket);
-        notifyAll(); // Notify waiting threads
+    public void addTicket(Ticket ticket) {
+        ticketQueue.offer(ticket);
     }
 
-    public synchronized int removeTicket() throws InterruptedException {
-        while (tickets.isEmpty()) {
-            wait(); // Wait if the pool is empty
-        }
-        int ticket = tickets.poll();
-        System.out.println("Removed ticket: " + ticket);
-        notifyAll(); // Notify waiting threads
-        return ticket;
+    public Ticket retrieveTicket() {
+        return ticketQueue.poll();
+    }
+
+    public int getAvailableTickets() {
+        return ticketQueue.size();
     }
 }
