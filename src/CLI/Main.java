@@ -1,3 +1,5 @@
+package CLI;
+
 import java.util.Scanner;
 
 public class Main {
@@ -13,7 +15,7 @@ public class Main {
             System.out.println("1. Configure System");
             System.out.println("2. Add Tickets");
             System.out.println("3. Retrieve Tickets");
-            System.out.println("4. Show Configuration");
+            System.out.println("4. Show CLI.Configuration");
             System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
 
@@ -31,7 +33,7 @@ public class Main {
                     config.setTotalTickets(totalTickets);
                     config.setMaxCapacity(maxCapacity);
                     config.setReleaseRate(releaseRate);
-                    System.out.println("Configuration updated!");
+                    System.out.println("CLI.Configuration updated!");
                     break;
 
                 case 2:
