@@ -15,7 +15,7 @@ public class Main {
             System.out.println("1. Configure System");
             System.out.println("2. Add Tickets");
             System.out.println("3. Retrieve Tickets");
-            System.out.println("4. Show CLI.Configuration");
+            System.out.println("4. Show Configuration");
             System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
 
@@ -24,50 +24,61 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter Total Tickets: ");
-                    int totalTickets = scanner.nextInt();
-                    System.out.print("Enter Max Capacity: ");
-                    int maxCapacity = scanner.nextInt();
-                    System.out.print("Enter Release Rate (ms): ");
-                    int releaseRate = scanner.nextInt();
-                    config.setTotalTickets(totalTickets);
-                    config.setMaxCapacity(maxCapacity);
-                    config.setReleaseRate(releaseRate);
-                    System.out.println("CLI.Configuration updated!");
+                    configureSystem(scanner, config);
                     break;
-
                 case 2:
-                    System.out.print("Enter number of tickets to add: ");
-                    int ticketsToAdd = scanner.nextInt();
-                    for (int i = 0; i < ticketsToAdd; i++) {
-                        ticketPool.addTicket(new Ticket(i + 1));
-                    }
-                    System.out.println(ticketsToAdd + " tickets added!");
+                    addTickets(scanner, ticketPool);
                     break;
-
                 case 3:
-                    System.out.print("Enter number of tickets to retrieve: ");
-                    int ticketsToRetrieve = scanner.nextInt();
-                    for (int i = 0; i < ticketsToRetrieve; i++) {
-                        Ticket ticket = ticketPool.retrieveTicket();
-                        if (ticket != null) {
-                            System.out.println("Retrieved: " + ticket);
-                        } else {
-                            System.out.println("No tickets available!");
-                        }
-                    }
+                    retrieveTickets(scanner, ticketPool);
                     break;
-
                 case 4:
                     System.out.println(config);
                     break;
-
                 case 5:
-                    System.out.println("Exiting the system. Goodbye!");
+                    System.out.println("Exiting the system.Goodbye!");
                     System.exit(0);
-
                 default:
                     System.out.println("Invalid choice! Please try again.");
+            }
+        }
+    }
+
+    private static void configureSystem(Scanner scanner, Configuration config) {
+        System.out.print("Enter Total Tickets: ");
+        int totalTickets = scanner.nextInt();
+        System.out.print("Enter Max Capacity: ");
+        int maxCapacity = scanner.nextInt();
+        System.out.print("Enter Release Rate (ms): ");
+        int releaseRate = scanner.nextInt();
+
+        config.setTotalTickets(totalTickets);
+        config.setMaxCapacity(maxCapacity);
+        config.setReleaseRate(releaseRate);
+
+        System.out.println("Configuration updated!");
+    }
+
+    private static void addTickets(Scanner scanner, TicketPool ticketPool) {
+        System.out.print("Enter number of tickets to add: ");
+        int count = scanner.nextInt();
+        for (int i = 0; i < count; i++) {
+            Ticket ticket = new Ticket(i + 1);
+            ticketPool.addTicket(ticket);
+        }
+        System.out.println(count + " tickets added!");
+    }
+
+    private static void retrieveTickets(Scanner scanner, TicketPool ticketPool) {
+        System.out.print("Enter number of tickets to retrieve: ");
+        int count = scanner.nextInt();
+        for (int i = 0; i < count; i++) {
+            Ticket ticket = ticketPool.retrieveTicket();
+            if (ticket != null) {
+                System.out.println("Retrieved: " + ticket);
+            } else {
+                System.out.println("No tickets available!");
+                break;
             }
         }
     }
