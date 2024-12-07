@@ -31,7 +31,7 @@ public class Configuration {
 
     @Override
     public String toString() {
-        return "System CLI.Configuration:\n" +
+        return "System Configuration:\n" +
                 "Total Tickets: " + totalTickets + "\n" +
                 "Max Capacity: " + maxCapacity + "\n" +
                 "Release Rate: " + releaseRate + " ms\n";
