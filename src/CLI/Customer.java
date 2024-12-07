@@ -13,14 +13,14 @@ public class Customer implements Runnable {
             while (true) {
                 Ticket ticket = ticketPool.retrieveTicket();
                 if (ticket != null) {
-                    System.out.println("CLI.Customer retrieved: " + ticket);
+                    System.out.println("Customer retrieved: " + ticket);
                 } else {
                     System.out.println("No tickets available!");
                 }
                 Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
-            System.out.println("CLI.Customer interrupted.");
+            System.out.println("Customer interrupted.");
         }
     }
 }
