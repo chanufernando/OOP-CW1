@@ -1,14 +1,14 @@
 package CLI;
 
 public class Ticket {
-    private int ticketId;
+    private int id;
 
-    public Ticket(int ticketId) {
-        this.ticketId = ticketId;
+    public Ticket(int id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
-        return "CLI.Ticket ID: " + ticketId;
+        return "Ticket ID: " + id;
     }
 }
