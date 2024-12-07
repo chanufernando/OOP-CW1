@@ -17,7 +17,7 @@ public class Vendor implements Runnable {
                 Thread.sleep(releaseRate);
             }
         } catch (InterruptedException e) {
-            System.out.println("CLI.Vendor interrupted.");
+            System.out.println("Vendor interrupted.");
         }
     }
 }
