@@ -1,6 +1,6 @@
 package CLI;
 
-
+public class Configuration {
     private int totalTickets;
     private int maxCapacity;
     private int releaseRate;
